@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.light {
+    --bg-color: theme('colors.gray.200');
+    --text-color: theme('colors.gray.800');
+    --section-bg-color: theme('colors.white');
+    --border-color: theme('colors.gray.300');
+    --primary-color: theme('colors.gray.300');
+    --secondary-color: theme('colors.gray.300');
+    --table-header-color: theme('colors.gray.50');
+    --hover-color: theme('colors.gray.300');
+    --bg-button-color: theme('colors.gray.200');
+    --input-text-color: theme('colors.gray.200');
+    --hover-table-selected-row: theme('colors.gray.100');
+}
+
+.dark {
+    --bg-color: theme('colors.gray.900');
+    --text-color: theme('colors.gray.200');
+    --section-bg-color: theme('colors.gray.800');
+    --border-color: theme('colors.gray.700');
+    --primary-color: theme('colors.gray.200');
+    --secondary-color: theme('colors.gray.200');
+    --table-header-color: theme('colors.gray.700');
+    --hover-color: theme('colors.gray.600');
+    --bg-button-color: theme('colors.gray.700');
+    --input-text-color: theme('colors.gray.700');
+    --hover-table-selected-row: theme('colors.gray.900');
+}
+
+:root {
+    font-family: 'Inter', sans-serif;
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('./assets/font/inter.woff2') format('woff2');
+}
+
+.tooltip {
+    position: relative;
+}
+
+.tooltip::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    transform: translate(-0.5rem, 1.5rem);
+    background: var(--bg-color);
+    color: var(--text-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    white-space: nowrap;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+}
+
+.tooltip:hover::before {
+    visibility: visible;
+    opacity: 1;
+}
