@@ -12,13 +12,10 @@ import { I18n, useI18n } from "../../hook/i18ntranslate"
 
 export const Todo = () => {
 
-    /*
-        Poner en singletone el i18n para no tener que pasarlo a todos los componentes
-    */
-
     // Variables local-storage global //
     const [darkMode, setDarkMode] = useLocalStorage<boolean>('darkMode', true)
     const [language, setLanguage] = useLocalStorage<Language>('language',{code:'es'})
+    I18n.instance.changeLanguage(language)
 
     // Variables local-storage app //
     const [todos, setTodo] = useLocalStorage<TodoTO[]>('todo', [])
@@ -95,6 +92,8 @@ export const Todo = () => {
                 break;
         }
     }
+
+    
 
     return (
         <>

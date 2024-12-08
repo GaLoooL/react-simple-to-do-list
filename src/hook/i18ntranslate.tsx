@@ -1,7 +1,6 @@
 import { Language } from "../global-interface";
 import en from "../locale/en";
 import es from "../locale/es";
-import { useLocalStorage } from "./localStorage";
 
 
 export class I18n {
@@ -28,19 +27,9 @@ export class I18n {
     }
 }
 
-function setDefaultLanguage() {
-    const [language] = useLocalStorage<Language>('language',{code:'es'})
-    I18n._instance.changeLanguage(language)
-}
-
 export function useI18n(path: string, replace? : string[]) {
     const keys = path.split('.')
     let value = I18n.instance.translate
-    
-    if (value === undefined) {
-        setDefaultLanguage()
-        value = I18n.instance.translate
-    }
 
     keys.forEach((key) => {
         if (value[key] !== undefined) {
