@@ -42,49 +42,51 @@ export const TodoList = ({
     const filteredTodos = todoFilter()
     
     return (   
-        <table className="table-auto w-full">
-            <thead className="py-10 bg-table-header">
-                <tr className="text-left">
-                    <th className="px-4 py-3" colSpan={1}/>
-                    <th className="px-4 py-3 uppercase font-bold w-8/12" colSpan={2}>
-                        <div className="flex justify-between items-center">
-                            {useI18n('table.tableHeader.todo')} 
-                            {   pageable.sortable.sortDirection === 'asc' ? 
-                                <span onClick={() => changeSort('todo', 'desc')} className="tooltip" data-tooltip={useI18n('table.tableHeaderOrder.todo.asc')}><TiArrowSortedDown className="size-6"/></span> : 
-                                <span onClick={() => changeSort('todo', 'asc')} className="tooltip" data-tooltip={useI18n('table.tableHeaderOrder.todo.desc')}><TiArrowSortedUp className="size-6"/></span>
-                            }
-                        </div>
-                    </th>
-                    <th className="px-4 py-3 uppercase font-bold" colSpan={1}>{useI18n('table.tableHeader.actions')}</th>
-                </tr>
-            </thead>
-            <tbody>
-                { filteredTodos.length === 0 ? (
-                    <tr>
-                        <td className="text-center" colSpan={4}>
-                            <div className="flex justify-center items-center gap-4 my-10">
-                                <LuListTodo  className="size-10"/>
-                                <h5 className="text-center py-2">{useI18n('table.emptyState')}</h5>
+        <div className="overflow-x-auto">
+            <table className="table-auto w-full">
+                <thead className="py-10 bg-table-header">
+                    <tr className="text-left">
+                        <th className="px-4 py-3" colSpan={1}/>
+                        <th className="px-4 py-3 uppercase font-bold w-8/12 " colSpan={2}>
+                            <div className="flex justify-between items-center text-xs sm:text-base">
+                                {useI18n('table.tableHeader.todo')} 
+                                {   pageable.sortable.sortDirection === 'asc' ? 
+                                    <span onClick={() => changeSort('todo', 'desc')} className="tooltip" data-tooltip={useI18n('table.tableHeaderOrder.todo.asc')}><TiArrowSortedDown className="size-4 sm:size-6"/></span> : 
+                                    <span onClick={() => changeSort('todo', 'asc')} className="tooltip" data-tooltip={useI18n('table.tableHeaderOrder.todo.desc')}><TiArrowSortedUp className="size-4 sm:size-6"/></span>
+                                }
                             </div>
-                        </td> 
+                        </th>
+                        <th className="px-4 py-3 uppercase font-bold text-xs sm:text-base" colSpan={1}>{useI18n('table.tableHeader.actions')}</th>
                     </tr>
-                    )
-                    :
-                    (
-                        todoFilter().map((tarea) => (
-                            <TodoDetail
-                                key={tarea.id}
-                                todo={tarea}
-                                updateTodo={updateTodo}
-                                viewTodo={viewTodo}
-                                editTodo={editTodo}
-                                removeTodo={removeTodo}
-                            >
-                            </TodoDetail>
-                        ))
-                    )
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    { filteredTodos.length === 0 ? (
+                        <tr>
+                            <td className="text-center" colSpan={4}>
+                                <div className="flex justify-center items-center gap-4 my-10">
+                                    <LuListTodo  className="size-6 sm:size-10"/>
+                                    <h5 className="text-center py-2 text-xs sm:text-base">{useI18n('table.emptyState')}</h5>
+                                </div>
+                            </td> 
+                        </tr>
+                        )
+                        :
+                        (
+                            todoFilter().map((tarea) => (
+                                <TodoDetail
+                                    key={tarea.id}
+                                    todo={tarea}
+                                    updateTodo={updateTodo}
+                                    viewTodo={viewTodo}
+                                    editTodo={editTodo}
+                                    removeTodo={removeTodo}
+                                >
+                                </TodoDetail>
+                            ))
+                        )
+                    }
+                </tbody>
+            </table>
+        </div>
     )
 }

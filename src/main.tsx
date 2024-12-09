@@ -6,7 +6,7 @@ import { Todo } from './components/todo/todo'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <div className="container mx-auto">
+    <div className="sm:container sm:w-full mx-auto w-[400px]">
       <Todo />
     </div>
   </StrictMode>,

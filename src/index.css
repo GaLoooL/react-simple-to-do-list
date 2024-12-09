@@ -61,6 +61,11 @@
     transition: opacity 0.25s ease-in-out;
 }
 
+.tooltip-tr::before {
+    background: var(--bg-button-color);
+    z-index: 1;
+}
+
 .tooltip:hover::before {
     visibility: visible;
     opacity: 1;

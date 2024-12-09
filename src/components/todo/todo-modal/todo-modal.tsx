@@ -14,7 +14,7 @@ interface TodoModalParams {
 export function TodoModal({todo, mode, isOpen, setOpen, setDialogParams, actionToTodo} : TodoModalParams) {
 
     const size = () : string => {
-        return mode === 'delete' || (mode === 'edit' && todo.done === true) ? 'w-3/6' : 'w-4/6'
+        return mode === 'delete' || (mode === 'edit' && todo.done === true) ? 'w-4/6 sm:w-3/6 ' : 'w5/6 sm:w-4/6'
     }
 
     return (
@@ -41,11 +41,11 @@ export function TodoModal({todo, mode, isOpen, setOpen, setDialogParams, actionT
                     >
                         <div className="px-6 pb-3 pt-7">
                             <div className="mx-3">
-                                <DialogTitle as="h3" className="text-base font-semibold">
+                                <DialogTitle as="h3" className="text-sm sm:text-base font-semibold">
                                     {useI18n('modal.title.' + mode)}
                                 </DialogTitle>
 
-                                <div className="mt-5">
+                                <div className="mt-5 text-sm sm:text-base">
                                     {
                                         mode === 'delete' || (mode === 'edit' && todo.done === true) ?
                                             mode === 'edit' ?
@@ -72,7 +72,7 @@ export function TodoModal({todo, mode, isOpen, setOpen, setDialogParams, actionT
                                 (mode === 'edit' || mode === 'add' || mode === 'delete') &&
                                 <button
                                     type="button" onClick={() => setOpen(false)}
-                                    className={`inline-flex justify-center rounded-md ${(mode === 'edit' && todo.done === true) ?  'bg-button' : 'bg-section'} px-3 py-2 text-sm font-semibold hover:bg-hover`}
+                                    className={`inline-flex justify-center rounded-md ${(mode === 'edit' && todo.done === true) ?  'bg-button' : 'bg-section'} px-3 py-2 text-sm sm:text-base font-semibold hover:bg-hover`}
                                 >
                                     {useI18n('modal.buttons.cancel')}
                                 </button>
@@ -85,7 +85,7 @@ export function TodoModal({todo, mode, isOpen, setOpen, setDialogParams, actionT
                                         }
                                         setOpen(false)
                                     }}
-                                    className="inline-flex justify-center rounded-md bg-button px-3 py-2 text-sm font-semibold hover:bg-hover"
+                                    className="inline-flex justify-center rounded-md bg-button px-3 py-2 text-sm sm:text-base font-semibold hover:bg-hover"
                                 >
                                     {useI18n('modal.buttons.' + mode)}
                                 </button>
