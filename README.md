@@ -6,7 +6,7 @@ It is written in TypeScript and uses React and Tailwind CSS.
 
 ## Deployment on vercer
 
-This is the url of the app:
+This is the url of the app: https://react-simple-to-do-list.vercel.app/
 
 To deploy it, just fork the repo and push it to vercel.
 
